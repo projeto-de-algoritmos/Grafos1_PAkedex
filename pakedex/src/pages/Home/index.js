@@ -2,14 +2,23 @@ import React from 'react';
 
 import {Title, Container} from './styles'
 
+import ButtonPokemon from '../../components/buttonPokemon/index'
+
 function Home (){ 
     return( 
-        <Container>
-            <Title>
-                PAkedex
-            </Title>
+        <div style={{display:"flex",flexDirection:"row", marginTop:'15%'}}>
+            <Container>
+                <ButtonPokemon />
+                <ButtonPokemon />
+                <ButtonPokemon />
+            </Container>
 
-        </Container>
+            <Container>
+                <ButtonPokemon />
+                <ButtonPokemon />
+                <ButtonPokemon />
+            </Container>
+        </div>
     );
 }
 

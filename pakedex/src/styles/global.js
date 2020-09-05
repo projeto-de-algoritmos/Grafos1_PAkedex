@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 import PokemonSolid from '../assets/fonts/PokemonSolid.ttf';
+import pokeball from '../assets/images/pokeball1.svg';
 
 
 export default createGlobalStyle`
@@ -21,6 +22,16 @@ export default createGlobalStyle`
     }
 
     body{
-        background-color: #ededed   ;
+        background: url(${pokeball}) no-repeat center top; 
+        background-color: #ededed;
     }
+
+    p{
+        font-family: 'Press Start 2P'
+    }
+
+    span{
+        font-family: 'Press Start 2P'
+    }
+
 `;
