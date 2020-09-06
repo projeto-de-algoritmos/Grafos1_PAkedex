@@ -5,7 +5,7 @@ import { Title, Container } from './styles'
 import { ButtonPokemon } from '../../components/'
 import { PokemonTypeConnect } from '../../common/'
 
-function Home() {
+const Home: React.FC = () =>{
 
     return (
         <div style={{ display: "flex", flexDirection: "row", marginTop: '15%' }}>
