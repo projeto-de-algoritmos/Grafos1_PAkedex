@@ -6,40 +6,16 @@ export default [
     strengths: [],
   },
   {
-    name: 'Fire',
-    immunes: [],
-    weaknesses: ['Fire', 'Water', 'Rock', 'Dragon'],
-    strengths: ['Grass', 'Ice', 'Bug', 'Steel'],
-  },
-  {
-    name: 'Water',
-    immunes: [],
-    weaknesses: ['Water', 'Grass', 'Dragon'],
-    strengths: ['Fire', 'Ground', 'Rock'],
-  },
-  {
-    name: 'Electric',
-    immunes: ['Ground'],
-    weaknesses: ['Electric', 'Grass', 'Dragon'],
-    strengths: ['Water', 'Flying'],
-  },
-  {
-    name: 'Grass',
-    immunes: [],
-    weaknesses: ['Fire', 'Grass', 'Poison', 'Flying', 'Bug', 'Dragon', 'Steel'],
-    strengths: ['Water', 'Ground', 'Rock'],
-  },
-  {
-    name: 'Ice',
-    immunes: [],
-    weaknesses: ['Fire', 'Water', 'Ice', 'Steel'],
-    strengths: ['Grass', 'Ground', 'Flying', 'Dragon'],
-  },
-  {
     name: 'Fighting',
     immunes: ['Ghost'],
     weaknesses: ['Poison', 'Flying', 'Psychic', 'Bug', 'Fairy'],
     strengths: ['Normal', 'Ice', 'Rock', 'Dark', 'Steel'],
+  },
+  {
+    name: 'Flying',
+    immunes: [],
+    weaknesses: ['Electric', 'Rock', 'Steel'],
+    strengths: ['Grass', 'Fighting', 'Bug'],
   },
   {
     name: 'Poison',
@@ -54,16 +30,10 @@ export default [
     strengths: ['Fire', 'Electric', 'Poison', 'Rock', 'Steel'],
   },
   {
-    name: 'Flying',
+    name: 'Rock',
     immunes: [],
-    weaknesses: ['Electric', 'Rock', 'Steel'],
-    strengths: ['Grass', 'Fighting', 'Bug'],
-  },
-  {
-    name: 'Psychic',
-    immunes: ['Dark'],
-    weaknesses: ['Psychic', 'Steel'],
-    strengths: ['Fighting', 'Poison'],
+    weaknesses: ['Fighting', 'Ground', 'Steel'],
+    strengths: ['Fire', 'Ice', 'Flying', 'Bug'],
   },
   {
     name: 'Bug',
@@ -80,16 +50,52 @@ export default [
     strengths: ['Grass', 'Psychic', 'Dark'],
   },
   {
-    name: 'Rock',
-    immunes: [],
-    weaknesses: ['Fighting', 'Ground', 'Steel'],
-    strengths: ['Fire', 'Ice', 'Flying', 'Bug'],
-  },
-  {
     name: 'Ghost',
     immunes: ['Normal'],
     weaknesses: ['Dark'],
     strengths: ['Psychic', 'Ghost'],
+  },
+  {
+    name: 'Steel',
+    immunes: [],
+    weaknesses: ['Fire', 'Water', 'Electric', 'Steel'],
+    strengths: ['Ice', 'Rock', 'Fairy'],
+  },
+  {
+    name: 'Fire',
+    immunes: [],
+    weaknesses: ['Fire', 'Water', 'Rock', 'Dragon'],
+    strengths: ['Grass', 'Ice', 'Bug', 'Steel'],
+  },
+  {
+    name: 'Water',
+    immunes: [],
+    weaknesses: ['Water', 'Grass', 'Dragon'],
+    strengths: ['Fire', 'Ground', 'Rock'],
+  },
+  {
+    name: 'Grass',
+    immunes: [],
+    weaknesses: ['Fire', 'Grass', 'Poison', 'Flying', 'Bug', 'Dragon', 'Steel'],
+    strengths: ['Water', 'Ground', 'Rock'],
+  },
+  {
+    name: 'Electric',
+    immunes: ['Ground'],
+    weaknesses: ['Electric', 'Grass', 'Dragon'],
+    strengths: ['Water', 'Flying'],
+  },
+  {
+    name: 'Psychic',
+    immunes: ['Dark'],
+    weaknesses: ['Psychic', 'Steel'],
+    strengths: ['Fighting', 'Poison'],
+  },
+  {
+    name: 'Ice',
+    immunes: [],
+    weaknesses: ['Fire', 'Water', 'Ice', 'Steel'],
+    strengths: ['Grass', 'Ground', 'Flying', 'Dragon'],
   },
   {
     name: 'Dragon',
@@ -102,12 +108,6 @@ export default [
     immunes: [],
     weaknesses: ['Fighting', 'Dark', 'Fairy'],
     strengths: ['Psychic', 'Ghost'],
-  },
-  {
-    name: 'Steel',
-    immunes: [],
-    weaknesses: ['Fire', 'Water', 'Electric', 'Steel'],
-    strengths: ['Ice', 'Rock', 'Fairy'],
   },
   {
     name: 'Fairy',
