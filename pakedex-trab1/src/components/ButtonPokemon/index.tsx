@@ -31,7 +31,12 @@ interface Pokemon {
 }
 
 
-const ButtonPokemon: React.FC<{isEnemy: boolean}> = ({isEnemy}) => {
+const ButtonPokemon: React.FC<{
+  isEnemy: boolean,
+  enemyTeam: (Pokemon | undefined)[],
+  setEnemyTeam: React.Dispatch<React.SetStateAction<(Pokemon | undefined)[]>>,
+
+}> = ({isEnemy,enemyTeam,setEnemyTeam}) => {
   const [selectedPokemon, setSelectedPokemon] = useState<Pokemon | undefined>(
     undefined,
   );
@@ -44,6 +49,7 @@ const ButtonPokemon: React.FC<{isEnemy: boolean}> = ({isEnemy}) => {
     if(isEnemy == true){
       let index = Math.floor(Math.random() * 151) + 1;  
       setSelectedPokemon(pokemon[index]);
+      setEnemyTeam(enemyTeam =>[...enemyTeam,pokemon[index]])
     }
   }, []);
 
@@ -53,7 +59,6 @@ const ButtonPokemon: React.FC<{isEnemy: boolean}> = ({isEnemy}) => {
     }else{
       setIsVisible(!isVisible);
     }
-    // setSelectedPokemon(!selectedPokemon);
   };
 
   return (
