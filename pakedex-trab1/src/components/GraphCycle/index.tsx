@@ -1,13 +1,14 @@
 import React, { useRef, useEffect } from 'react';
 
-import { drop } from 'lodash';
-import { Container, CicleGraph, Cicle } from './styles';
+import { drop, includes } from 'lodash';
+import { Container, CicleGraph, Cicle, CicleImg } from './styles';
 
 interface GraphCycleProp {
   cycle: any;
   pokemon: any;
+  type: any;
 }
-const GraphCycle: React.FC<GraphCycleProp> = ({ cycle, pokemon }) => {
+const GraphCycle: React.FC<GraphCycleProp> = ({ cycle, pokemon, type }) => {
   const graph = useRef<any>(null);
 
   useEffect(() => {
@@ -29,7 +30,14 @@ const GraphCycle: React.FC<GraphCycleProp> = ({ cycle, pokemon }) => {
   return (
     <Container>
       <CicleGraph ref={graph}>
-        {cycle && drop(cycle).map((item) => <Cicle />)}
+        {cycle &&
+          drop(cycle).map((item) =>
+            item === type ? (
+              <CicleImg style={{ objectFit: 'contain' }} image={pokemon.img} />
+            ) : (
+              <Cicle />
+            ),
+          )}
       </CicleGraph>
     </Container>
   );

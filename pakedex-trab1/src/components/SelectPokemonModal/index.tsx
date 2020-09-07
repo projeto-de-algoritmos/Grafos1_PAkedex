@@ -101,12 +101,27 @@ const SelectPokemonModal: React.FC<{
                   ?.filter(
                     (item) =>
                       head(item) ===
-                        get(PokemonType, `${seletedPokemon?.type[0]}`) ||
-                      head(item) ===
-                        get(PokemonType, `${seletedPokemon?.type[1]}`),
+                      get(PokemonType, `${seletedPokemon?.type[0]}`),
                   )
                   .map((item) => (
-                    <GraphCycle cycle={item} pokemon={seletedPokemon} />
+                    <GraphCycle
+                      cycle={item}
+                      type={get(PokemonType, `${seletedPokemon?.type[0]}`)}
+                      pokemon={seletedPokemon}
+                    />
+                  )) &&
+                strengthsList
+                  ?.filter(
+                    (item) =>
+                      head(item) ===
+                      get(PokemonType, `${seletedPokemon?.type[1]}`),
+                  )
+                  .map((item) => (
+                    <GraphCycle
+                      cycle={item}
+                      type={get(PokemonType, `${seletedPokemon?.type[1]}`)}
+                      pokemon={seletedPokemon}
+                    />
                   ))}
             </Column>
           </Container>
