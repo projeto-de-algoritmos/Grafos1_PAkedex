@@ -4,6 +4,7 @@ import './styles.css';
 
 const GraphCycle: React.FC = () => {
   const graph = useRef<any>(null);
+  const LIST = [1, 14, 11, 10, 9, 6, 13, 1];
 
   useEffect(() => {
     const ciclegraph = graph.current;

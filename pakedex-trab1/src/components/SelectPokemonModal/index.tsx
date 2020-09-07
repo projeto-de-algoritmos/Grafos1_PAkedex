@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
+import { get } from 'lodash';
 import GraphCycle from '../GraphCycle';
+import { Pokemons } from '../../common';
 import {
   Container,
   Column,
@@ -12,27 +14,48 @@ import {
   PokeTitle,
 } from './styles';
 
+interface Pokemon {
+  id: number;
+  num: string;
+  name: string;
+  img: string;
+  type: string[];
+  height: string;
+  weight: string;
+  candy: string;
+  // candy_count: any;
+  egg: string;
+  spawn_chance: number;
+  avg_spawns: number;
+  spawn_time: string;
+  multipliers: number[] | null;
+  weaknesses: string[];
+  next_evolution?: {
+    num: string;
+    name: string;
+  }[];
+  prev_evolution?: {
+    num: string;
+    name: string;
+  }[];
+}
+
 const SelectPokemonModal: React.FC<{
   open: boolean;
   handleModal: () => void;
 }> = ({ open, handleModal }) => {
-  const [seletedPokemon, setSeletedPokemon] = useState('');
+  const [seletedPokemon, setSeletedPokemon] = useState<Pokemon>({} as Pokemon);
+  const pokemon: Pokemon[] = Pokemons;
 
-  const pokemons = [];
-  for (let i = 1; i < 152; i += 1) {
-    pokemons.push(
-      `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i}.png`,
-    );
+  function handleClick(item: Pokemon): void {
+    console.log(item);
+    setSeletedPokemon(item);
   }
 
-  function handleClick(img: string): void {
-    console.log('teste');
-  }
-
-  function renderPokemon(img: string): JSX.Element {
+  function renderPokemon(item: Pokemon): JSX.Element {
     return (
-      <PokeDisplay onClick={() => handleClick(img)}>
-        <img src={img} />
+      <PokeDisplay onClick={() => handleClick(item)}>
+        <img src={item.img} />
       </PokeDisplay>
     );
   }
@@ -52,15 +75,16 @@ const SelectPokemonModal: React.FC<{
           <Container>
             <Column>
               <PokeTitle>Selecione um Pokemon</PokeTitle>
-              <PokeRow>
-                {pokemons.map((pokemon) => renderPokemon(pokemon))}
-              </PokeRow>
+              <PokeRow>{pokemon.map((item) => renderPokemon(item))}</PokeRow>
             </Column>
             <Divider />
             <Column>
               <p>Pokemon Selecionado</p>
-              {seletedPokemon !== '' ? (
-                <img style={{ objectFit: 'contain' }} src={seletedPokemon} />
+              {get(seletedPokemon, 'img', null) ? (
+                <img
+                  style={{ objectFit: 'contain' }}
+                  src={get(seletedPokemon, 'img', '')}
+                />
               ) : (
                 <p>Nenhum Selecionado</p>
               )}
