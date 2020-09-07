@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import SelectPokemonModal from '../SelectPokemonModal/'
 
 import { Container } from './styles';
 
-function ButtonPokemon() {
+const ButtonPokemon: React.FC = () =>{
 
   const [selectedPokemon, setSelectedPokemon] = useState(false);
   const [pokeNumber, setPokeNumber] = useState('');
@@ -19,8 +20,8 @@ function ButtonPokemon() {
     <Container onClick={testeFunc}> 
       {selectedPokemon ? 
       <> 
-        <img src={pokeNumber} height="120px" /> 
-        <p>Bulbassaur</p> 
+
+        <SelectPokemonModal open={selectedPokemon}/>
       </>
       :
       <>
