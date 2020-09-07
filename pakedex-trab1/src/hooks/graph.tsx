@@ -1,19 +1,29 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  useCallback,
+} from 'react';
 import { fill, get } from 'lodash';
 import { PokemonType, PokemonTypeConnect } from '../common';
 import { findCircuits } from './algorithmJohnson.js';
 
 interface GraphContextData {
   matrix: number[][];
+  strengthsList: number[][];
 }
 
 const GraphContext = createContext<GraphContextData>({} as GraphContextData);
 
 const GraphProvider: React.FC = ({ children }) => {
   const [matrix, setMatrix] = useState<number[][]>({} as number[][]);
+  const [strengthsList, setStrengthsList] = useState<number[][]>(
+    {} as number[][],
+  );
 
-  useEffect(() => {
-    // TODO: construindo matriz de adjacência e definindo peso nas arestas do grafo.
+  // TODO: construindo matriz de adjacência e definindo peso nas arestas do grafo.
+  const buildAdjacencyMatrix = useCallback(() => {
     const matrixTemp = PokemonTypeConnect.map((item) => {
       const rowMatrix = fill(Array(PokemonTypeConnect.length), 1);
       item.weaknesses.forEach((element) => {
@@ -33,16 +43,33 @@ const GraphProvider: React.FC = ({ children }) => {
 
     // console.log(matrixTemp);
     setMatrix(matrixTemp);
-
-    const adjacencyList = [[1], [2], [3], [0]];
-
-    console.log(findCircuits(adjacencyList));
   }, []);
+
+  // TODO: construindo lista de adjacência para força
+  const buildAdjacencyList = useCallback(() => {
+    const listTemp = PokemonTypeConnect.map((item) => {
+      let list: number[] = [];
+      item.strengths.forEach((element) => {
+        list = [...list, get(PokemonType, `${element}`)];
+      });
+
+      return list;
+    });
+    // console.log(listTemp);
+    console.log(findCircuits(listTemp));
+    setStrengthsList(listTemp);
+  }, []);
+
+  useEffect(() => {
+    buildAdjacencyList();
+    buildAdjacencyMatrix();
+  }, [buildAdjacencyList, buildAdjacencyMatrix]);
 
   return (
     <GraphContext.Provider
       value={{
         matrix,
+        strengthsList,
       }}
     >
       {children}
