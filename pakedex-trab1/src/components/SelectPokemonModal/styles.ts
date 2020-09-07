@@ -6,6 +6,7 @@ export const Container = styled.div`
   align-items: center;
   background-color: white;
   max-height: 500px;
+  padding: 20px;
 `;
 
 export const Column = styled.div`
@@ -14,6 +15,7 @@ export const Column = styled.div`
   flex-direction: column;
   background-color: #fefefe;
   height: 500px;
+  overflow-y: auto;
 `;
 
 export const Divider = styled.div`

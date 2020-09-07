@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
-
+import GraphCycle from '../GraphCycle';
 import {
   Container,
   Column,
@@ -42,6 +42,7 @@ const SelectPokemonModal: React.FC<{ open: boolean }> = ({ open }) => {
         open={open}
         maxWidth="md"
         scroll="paper"
+        PaperProps={{ style: { maxWidth: '100%' } }}
       >
         <DialogContent>
           <Container>
@@ -59,6 +60,7 @@ const SelectPokemonModal: React.FC<{ open: boolean }> = ({ open }) => {
               ) : (
                 <p>Nenhum Selecionado</p>
               )}
+              <GraphCycle />
             </Column>
           </Container>
         </DialogContent>

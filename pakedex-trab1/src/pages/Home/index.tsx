@@ -2,7 +2,11 @@ import React from 'react';
 
 import { Title, Container } from './styles';
 
-import { ButtonPokemon, SelectPokemonModal } from '../../components';
+import {
+  ButtonPokemon,
+  SelectPokemonModal,
+  GraphCycle,
+} from '../../components';
 
 const Home: React.FC = () => {
   return (
@@ -11,6 +15,7 @@ const Home: React.FC = () => {
         <ButtonPokemon />
         <ButtonPokemon />
         <ButtonPokemon />
+        <GraphCycle />
       </Container>
     </div>
   );
