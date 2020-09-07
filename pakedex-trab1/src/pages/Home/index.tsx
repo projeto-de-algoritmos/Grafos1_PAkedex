@@ -2,8 +2,7 @@ import React from 'react';
 
 import { Title, Container } from './styles';
 
-import { ButtonPokemon , SelectPokemonModal} from '../../components/'
-import { PokemonTypeConnect } from '../../common/'
+import { ButtonPokemon, SelectPokemonModal } from '../../components';
 
 const Home: React.FC = () => {
   return (
@@ -15,6 +14,5 @@ const Home: React.FC = () => {
       </Container>
     </div>
   );
-    
-}
+};
 export default Home;

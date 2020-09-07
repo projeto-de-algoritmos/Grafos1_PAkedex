@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { fill, get } from 'lodash';
 import { PokemonType, PokemonTypeConnect } from '../common';
+import { findCircuits } from './algorithmJohnson.js';
 
 interface GraphContextData {
   matrix: number[][];
@@ -12,8 +13,7 @@ const GraphProvider: React.FC = ({ children }) => {
   const [matrix, setMatrix] = useState<number[][]>({} as number[][]);
 
   useEffect(() => {
-    // TODO: construindo matriz de adjacências e definindo com peso nas arestas do grafo.
-
+    // TODO: construindo matriz de adjacência e definindo peso nas arestas do grafo.
     const matrixTemp = PokemonTypeConnect.map((item) => {
       const rowMatrix = fill(Array(PokemonTypeConnect.length), 1);
       item.weaknesses.forEach((element) => {
@@ -33,6 +33,10 @@ const GraphProvider: React.FC = ({ children }) => {
 
     // console.log(matrixTemp);
     setMatrix(matrixTemp);
+
+    const adjacencyList = [[1], [2], [3], [0]];
+
+    console.log(findCircuits(adjacencyList));
   }, []);
 
   return (
