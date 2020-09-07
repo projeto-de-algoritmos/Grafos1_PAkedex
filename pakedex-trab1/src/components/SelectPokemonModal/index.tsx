@@ -12,7 +12,10 @@ import {
   PokeTitle,
 } from './styles';
 
-const SelectPokemonModal: React.FC<{ open: boolean }> = ({ open }) => {
+const SelectPokemonModal: React.FC<{
+  open: boolean;
+  handleModal: () => void;
+}> = ({ open, handleModal }) => {
   const [seletedPokemon, setSeletedPokemon] = useState('');
 
   const pokemons = [];
@@ -37,12 +40,13 @@ const SelectPokemonModal: React.FC<{ open: boolean }> = ({ open }) => {
     <div>
       <Dialog
         fullWidth
-        onClose={handleClick}
+        onClose={handleModal}
         aria-labelledby="simple-dialog-title"
         open={open}
         maxWidth="md"
         scroll="paper"
         PaperProps={{ style: { maxWidth: '100%' } }}
+        onClick={(e) => e.stopPropagation()}
       >
         <DialogContent>
           <Container>

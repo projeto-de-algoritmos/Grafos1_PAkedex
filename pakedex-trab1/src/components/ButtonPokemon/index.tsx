@@ -4,7 +4,9 @@ import SelectPokemonModal from '../SelectPokemonModal';
 import { Container } from './styles';
 
 const ButtonPokemon: React.FC = () => {
-  const [selectedPokemon, setSelectedPokemon] = useState(false);
+  const [selectedPokemon, setSelectedPokemon] = useState({});
+  const [isVisible, setIsVisible] = useState(false);
+
   const [pokeNumber, setPokeNumber] = useState('');
 
   useEffect(() => {
@@ -14,22 +16,17 @@ const ButtonPokemon: React.FC = () => {
     );
   }, []);
 
-  const testeFunc = (): void => {
-    setSelectedPokemon(!selectedPokemon);
+  const handleModal = (): void => {
+    setIsVisible(!isVisible);
+    // setSelectedPokemon(!selectedPokemon);
   };
 
   return (
-    <Container onClick={testeFunc}>
-      {selectedPokemon ? (
-        <>
-          <SelectPokemonModal open={selectedPokemon} />
-        </>
-      ) : (
-        <>
-          <p style={{ fontSize: 40, marginBottom: 20 }}>+</p>
-          <p>Select Pokemon</p>
-        </>
-      )}
+    <Container onClick={handleModal}>
+      <p style={{ fontSize: 40, marginBottom: 20 }}>+</p>
+      <p>Select Pokemon</p>
+
+      <SelectPokemonModal open={isVisible} handleModal={handleModal} />
     </Container>
   );
 };
