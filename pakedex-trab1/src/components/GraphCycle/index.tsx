@@ -11,7 +11,6 @@ interface GraphCycleProp {
 }
 const GraphCycle: React.FC<GraphCycleProp> = ({ cycle, pokemon, type }) => {
   const graph = useRef<any>(null);
-  console.log('teste ->>', Icons[0].image);
   useEffect(() => {
     const ciclegraph = graph.current;
     const circleElements = ciclegraph?.childNodes;

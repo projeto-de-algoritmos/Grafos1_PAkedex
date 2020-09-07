@@ -68,18 +68,17 @@ export const PokeDisplayStats = styled.div`
   margin-right: 20px;
 `;
 
-
 export const StatsList = styled.div`
   display: flex;
   flex-direction: row;
-  align-items:center;
+  align-items: center;
   justify-content: flex-start;
 `;
 
 export const Stats = styled.div`
   display: flex;
   flex-direction: column;
-  align-items:flex-start;
+  align-items: flex-start;
   justify-content: flex-start;
 `;
 

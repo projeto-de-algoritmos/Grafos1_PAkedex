@@ -16,7 +16,7 @@ import {
   StatsList,
   PokeDisplayStats,
   Stats,
-  Status
+  Status,
 } from './styles';
 import { useGraph } from '../../hooks/graph';
 
@@ -91,32 +91,45 @@ const SelectPokemonModal: React.FC<{
             <Divider />
             <Column>
               {get(selectedPokemon, 'img', null) ? (
-              <>
-                
-                <div style={{display:'flex',justifyContent:'center', alignItems:'center'}}>
-                  <PokeTitle>Pokemon Selecionado</PokeTitle>
-                </div>
-                <StatsList>
-                  <PokeDisplayStats>
-                    <img
-                      style={{height:150, width:150}}
-                      src={get(selectedPokemon, 'img', '')}
-                    />
-                  </PokeDisplayStats>
-                  <Stats>
-                    <Status>Nome : {get(selectedPokemon, 'name', '')}</Status>
-                    <Status>Id : #{get(selectedPokemon, 'id', '')}</Status>
-                    <Status>Tipos :</Status>
-                    <div style={{display:'flex', flexDirection:'row'}}>
-                      {selectedPokemon?.type.map((type) => (
-                        <p style={{marginLeft: 5, marginRight:5}}>{type}</p>
-                      ))}
-                    </div>
-                  </Stats>
-                </StatsList>
-              </>
+                <>
+                  <div
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <PokeTitle>Pokemon Selecionado</PokeTitle>
+                  </div>
+                  <StatsList>
+                    <PokeDisplayStats>
+                      <img
+                        style={{ height: 150, width: 150 }}
+                        src={get(selectedPokemon, 'img', '')}
+                      />
+                    </PokeDisplayStats>
+                    <Stats>
+                      <Status>Nome : {get(selectedPokemon, 'name', '')}</Status>
+                      <Status>Id : #{get(selectedPokemon, 'id', '')}</Status>
+                      <Status>Tipos :</Status>
+                      <div style={{ display: 'flex', flexDirection: 'row' }}>
+                        {selectedPokemon?.type.map((type) => (
+                          <p style={{ marginLeft: 5, marginRight: 5 }}>
+                            {type}
+                          </p>
+                        ))}
+                      </div>
+                    </Stats>
+                  </StatsList>
+                </>
               ) : (
-                <div style={{display:'flex',justifyContent:'center', alignItems:'center'}}>
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
                   <PokeTitle>Nenhum Selecionado</PokeTitle>
                 </div>
               )}
