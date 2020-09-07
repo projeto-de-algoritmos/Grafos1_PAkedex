@@ -9,9 +9,14 @@ const Home: React.FC = () => {
     <div style={{ display: 'flex', flexDirection: 'row', marginTop: '15%' }}>
       <Container>
     
-        <ButtonPokemon />
-        <ButtonPokemon />
-        <ButtonPokemon />
+        <ButtonPokemon isEnemy={false} />
+        <ButtonPokemon isEnemy={false} />
+        <ButtonPokemon isEnemy={false} />
+      </Container>
+      <Container>
+        <ButtonPokemon isEnemy={true} />
+        <ButtonPokemon isEnemy={true}/>
+        <ButtonPokemon isEnemy={true}/>
       </Container>
     </div>
   );

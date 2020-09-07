@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SelectPokemonModal from '../SelectPokemonModal';
+import { Pokemons, PokemonType } from '../../common';
 
 import { Container } from './styles';
 
@@ -30,23 +31,28 @@ interface Pokemon {
 }
 
 
-const ButtonPokemon: React.FC = () => {
+const ButtonPokemon: React.FC<{isEnemy: boolean}> = ({isEnemy}) => {
   const [selectedPokemon, setSelectedPokemon] = useState<Pokemon | undefined>(
     undefined,
   );
   const [isVisible, setIsVisible] = useState(false);
 
   const [pokeNumber, setPokeNumber] = useState('');
+  const pokemon: Pokemon[] = Pokemons;
 
   useEffect(() => {
-    const numTeste = Math.floor(Math.random() * 151);
-    setPokeNumber(
-      `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${numTeste}.png`,
-    );
+    if(isEnemy == true){
+      let index = Math.floor(Math.random() * 151) + 1;  
+      setSelectedPokemon(pokemon[index]);
+    }
   }, []);
 
   const handleModal = (): void => {
-    setIsVisible(!isVisible);
+    if(isEnemy == true){
+      setIsVisible(false);  
+    }else{
+      setIsVisible(!isVisible);
+    }
     // setSelectedPokemon(!selectedPokemon);
   };
 
