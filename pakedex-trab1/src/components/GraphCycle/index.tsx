@@ -25,24 +25,9 @@ const GraphCycle: React.FC = () => {
   return (
     <Container>
       <CicleGraph ref={graph}>
-        <Cicle />
-        <Cicle />
-        <Cicle />
-        <Cicle />
-        <Cicle />
-        <Cicle />
-        <Cicle />
-        <Cicle />
-        <Cicle />
-        <Cicle />
-        <Cicle />
-        <Cicle />
-        <Cicle />
-        <Cicle />
-        <Cicle />
-        <Cicle />
-        <Cicle />
-        <Cicle />
+        {LIST.map((item) => (
+          <Cicle key={item} />
+        ))}
       </CicleGraph>
     </Container>
   );

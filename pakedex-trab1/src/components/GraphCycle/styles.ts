@@ -2,7 +2,10 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   font-family: sans-serif;
-  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
 `;
 
 export const CicleGraph = styled.div`
