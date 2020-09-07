@@ -8,6 +8,7 @@ const Home: React.FC = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'row', marginTop: '15%' }}>
       <Container>
+    
         <ButtonPokemon />
         <ButtonPokemon />
         <ButtonPokemon />

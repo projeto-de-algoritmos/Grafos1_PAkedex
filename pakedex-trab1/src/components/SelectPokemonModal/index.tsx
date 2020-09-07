@@ -13,6 +13,10 @@ import {
   PokeRow,
   PokeDisplay,
   PokeTitle,
+  StatsList,
+  PokeDisplayStats,
+  Stats,
+  Status
 } from './styles';
 import { useGraph } from '../../hooks/graph';
 
@@ -46,7 +50,7 @@ const SelectPokemonModal: React.FC<{
   open: boolean;
   handleModal: () => void;
 }> = ({ open, handleModal }) => {
-  const [seletedPokemon, setSeletedPokemon] = useState<Pokemon | undefined>(
+  const [selectedPokemon, setselectedPokemon] = useState<Pokemon | undefined>(
     undefined,
   );
   const pokemon: Pokemon[] = Pokemons;
@@ -54,10 +58,10 @@ const SelectPokemonModal: React.FC<{
 
   function handleClick(item: Pokemon): void {
     console.log(item);
-    setSeletedPokemon(item);
+    setselectedPokemon(item);
   }
 
-  console.log(get(PokemonType, `${seletedPokemon?.type[0]}`, undefined));
+  console.log(get(PokemonType, `${selectedPokemon?.type[0]}`, undefined));
   console.log(strengthsList);
   function renderPokemon(item: Pokemon): JSX.Element {
     return (
@@ -86,41 +90,62 @@ const SelectPokemonModal: React.FC<{
             </Column>
             <Divider />
             <Column>
-              <p>Pokemon Selecionado</p>
-              {get(seletedPokemon, 'img', null) ? (
-                <img
-                  style={{ objectFit: 'contain' }}
-                  src={get(seletedPokemon, 'img', '')}
-                />
+              {get(selectedPokemon, 'img', null) ? (
+              <>
+                
+                <div style={{display:'flex',justifyContent:'center', alignItems:'center'}}>
+                  <PokeTitle>Pokemon Selecionado</PokeTitle>
+                </div>
+                <StatsList>
+                  <PokeDisplayStats>
+                    <img
+                      style={{height:150, width:150}}
+                      src={get(selectedPokemon, 'img', '')}
+                    />
+                  </PokeDisplayStats>
+                  <Stats>
+                    <Status>Nome : {get(selectedPokemon, 'name', '')}</Status>
+                    <Status>Id : #{get(selectedPokemon, 'id', '')}</Status>
+                    <Status>Tipos :</Status>
+                    <div style={{display:'flex', flexDirection:'row'}}>
+                      {selectedPokemon?.type.map((type) => (
+                        <p style={{marginLeft: 5, marginRight:5}}>{type}</p>
+                      ))}
+                    </div>
+                  </Stats>
+                </StatsList>
+              </>
               ) : (
-                <p>Nenhum Selecionado</p>
+                <div style={{display:'flex',justifyContent:'center', alignItems:'center'}}>
+                  <PokeTitle>Nenhum Selecionado</PokeTitle>
+                </div>
               )}
               {strengthsList &&
-                seletedPokemon &&
+                selectedPokemon &&
                 strengthsList
                   ?.filter(
                     (item) =>
                       head(item) ===
-                      get(PokemonType, `${seletedPokemon?.type[0]}`),
+                      get(PokemonType, `${selectedPokemon?.type[0]}`),
                   )
                   .map((item) => (
                     <GraphCycle
                       cycle={item}
-                      type={get(PokemonType, `${seletedPokemon?.type[0]}`)}
-                      pokemon={seletedPokemon}
+                      type={get(PokemonType, `${selectedPokemon?.type[0]}`)}
+                      pokemon={selectedPokemon}
                     />
                   )) &&
                 strengthsList
                   ?.filter(
                     (item) =>
                       head(item) ===
-                      get(PokemonType, `${seletedPokemon?.type[1]}`),
+                      get(PokemonType, `${selectedPokemon?.type[1]}`),
                   )
                   .map((item) => (
                     <GraphCycle
                       cycle={item}
-                      type={get(PokemonType, `${seletedPokemon?.type[1]}`)}
-                      pokemon={seletedPokemon}
+                      type={get(PokemonType, `${selectedPokemon?.type[1]}`)}
+                      pokemon={selectedPokemon}
                     />
                   ))}
             </Column>
