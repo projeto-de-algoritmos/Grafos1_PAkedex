@@ -1,7 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 
-import { drop, includes } from 'lodash';
-import { Container, CicleGraph, Cicle, CicleImg } from './styles';
+import { drop } from 'lodash';
+import { Container, CicleGraph, Cicle } from './styles';
+import { Icons } from '../../assets';
 
 interface GraphCycleProp {
   cycle: any;
@@ -10,7 +11,7 @@ interface GraphCycleProp {
 }
 const GraphCycle: React.FC<GraphCycleProp> = ({ cycle, pokemon, type }) => {
   const graph = useRef<any>(null);
-
+  console.log('teste ->>', Icons[0].image);
   useEffect(() => {
     const ciclegraph = graph.current;
     const circleElements = ciclegraph?.childNodes;
@@ -31,13 +32,17 @@ const GraphCycle: React.FC<GraphCycleProp> = ({ cycle, pokemon, type }) => {
     <Container>
       <CicleGraph ref={graph}>
         {cycle &&
-          drop(cycle).map((item) =>
-            item === type ? (
-              <CicleImg style={{ objectFit: 'contain' }} image={pokemon.img} />
-            ) : (
-              <Cicle />
-            ),
-          )}
+          drop(cycle).map((item) => (
+            <Cicle
+              key={String(item)}
+              style={{
+                backgroundSize: type === item ? 90 : 50,
+                backgroundColor:
+                  type === item ? 'transparent' : Icons[Number(item)].color,
+              }}
+              image={type === item ? pokemon.img : Icons[Number(item)].image}
+            />
+          ))}
       </CicleGraph>
     </Container>
   );

@@ -31,26 +31,16 @@ interface CircleProps {
   image: string;
 }
 
-export const CicleImg = styled.img.attrs((props: CircleProps) => ({
-  src: props.image,
-}))<CircleProps>`
+export const Cicle = styled.div<CircleProps>`
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 90px;
-  height: 90px;
-  margin: calc(-90px / 2);
-  background: ${(props) => props.image};
+  width: 75px;
+  height: 75px;
+  margin: calc(-75px / 2);
+  background: url(${(props) => props.image});
   border-radius: 50%;
-`;
-
-export const Cicle = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 60px;
-  height: 60px;
-  margin: calc(-60px / 2);
-  background: red;
-  border-radius: 50%;
+  background-position: center;
+  background-color: red;
+  background-repeat: no-repeat;
 `;
