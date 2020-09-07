@@ -54,3 +54,36 @@ export const PokeDisplay = styled.button`
   margin-left: 5px;
   margin-right: 5px;
 `;
+
+export const PokeDisplayStats = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  width: 150px;
+  background-color: #edededed;
+  border: 2px solid #dd412e;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+`;
+
+
+export const StatsList = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content: flex-start;
+`;
+
+export const Stats = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start;
+  justify-content: flex-start;
+`;
+
+export const Status = styled.p`
+  margin-top: 5px;
+  margin-bottom: 5px;
+`;
