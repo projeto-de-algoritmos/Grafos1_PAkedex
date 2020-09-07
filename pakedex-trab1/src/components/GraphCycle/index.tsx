@@ -5,8 +5,9 @@ import { Container, CicleGraph, Cicle } from './styles';
 
 interface GraphCycleProp {
   cycle: any;
+  pokemon: any;
 }
-const GraphCycle: React.FC<GraphCycleProp> = ({ cycle }) => {
+const GraphCycle: React.FC<GraphCycleProp> = ({ cycle, pokemon }) => {
   const graph = useRef<any>(null);
 
   useEffect(() => {
@@ -23,7 +24,7 @@ const GraphCycle: React.FC<GraphCycleProp> = ({ cycle }) => {
         ciclegraph?.clientWidth / 2
       }px) rotate(-${angle}deg)`;
     }
-  }, []);
+  }, [cycle]);
 
   return (
     <Container>

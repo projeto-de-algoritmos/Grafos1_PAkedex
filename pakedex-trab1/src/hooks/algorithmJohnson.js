@@ -1,11 +1,11 @@
 import tarjan from 'strongly-connected-components';
 
 export function findCircuits(edges, cb) {
-  const circuits = []; // Output
+  let circuits = []; // Output
 
-  const stack = [];
-  const blocked = [];
-  const B = {};
+  let stack = [];
+  let blocked = [];
+  let B = {};
   let Ak = [];
   let s;
 
@@ -61,7 +61,7 @@ export function findCircuits(edges, cb) {
   }
 
   function output(start, stack) {
-    const cycle = [].concat(stack).concat(start);
+    let cycle = [].concat(stack).concat(start);
     if (cb) {
       cb(circuit);
     } else {
@@ -82,13 +82,13 @@ export function findCircuits(edges, cb) {
   function adjacencyStructureSCC(from) {
     // Make subgraph starting from vertex minId
     subgraph(from);
-    const g = edges;
+    let g = edges;
 
     // Find strongly connected components using Tarjan algorithm
-    const sccs = tarjan(g);
+    let sccs = tarjan(g);
 
     // Filter out trivial connected components (ie. made of one node)
-    const ccs = sccs.components.filter(function (scc) {
+    let ccs = sccs.components.filter(function (scc) {
       return scc.length > 1;
     });
 
@@ -104,12 +104,12 @@ export function findCircuits(edges, cb) {
       }
     }
 
-    const cc = ccs[leastVertexComponent];
+    let cc = ccs[leastVertexComponent];
 
     if (!cc) return false;
 
     // Return the adjacency list of first component
-    const adjList = edges.map(function (l, index) {
+    let adjList = edges.map(function (l, index) {
       if (cc.indexOf(index) === -1) return [];
       return l.filter(function (i) {
         return cc.indexOf(i) !== -1;
@@ -123,11 +123,11 @@ export function findCircuits(edges, cb) {
   }
 
   s = 0;
-  const n = edges.length;
+  let n = edges.length;
   while (s < n) {
     // find strong component with least vertex in
     // subgraph starting from vertex `s`
-    const p = adjacencyStructureSCC(s);
+    let p = adjacencyStructureSCC(s);
 
     // Its least vertex
     s = p.leastVertex;
@@ -137,7 +137,7 @@ export function findCircuits(edges, cb) {
     if (Ak) {
       for (let i = 0; i < Ak.length; i++) {
         for (let j = 0; j < Ak[i].length; j++) {
-          const vertexId = Ak[i][j];
+          let vertexId = Ak[i][j];
           blocked[+vertexId] = false;
           B[vertexId] = {};
         }

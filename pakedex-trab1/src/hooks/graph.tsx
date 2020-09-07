@@ -51,19 +51,24 @@ const GraphProvider: React.FC = ({ children }) => {
   const buildAdjacencyList = useCallback(() => {
     const listTemp = PokemonTypeConnect.map((item) => {
       let list: number[] = [];
+
       item.strengths.forEach((element) => {
         list = [...list, get(PokemonType, `${element}`)];
       });
 
       return list;
     });
-    // console.log(matrixTemp);
+    let counter = 0;
+    function increment(): void {
+      counter += 1;
+    }
+
     setStrengthsList(findCircuits(listTemp));
   }, []);
 
   useEffect(() => {
     buildAdjacencyList();
-    buildAdjacencyMatrix();
+    // buildAdjacencyMatrix();
   }, [buildAdjacencyList, buildAdjacencyMatrix]);
 
   return (

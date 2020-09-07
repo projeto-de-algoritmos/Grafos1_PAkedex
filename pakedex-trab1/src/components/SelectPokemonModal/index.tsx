@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import { get, drop, head } from 'lodash';
 import GraphCycle from '../GraphCycle';
 
-import { Pokemons } from '../../common';
+import { Pokemons, PokemonType } from '../../common';
 import {
   Container,
   Column,
@@ -46,7 +46,9 @@ const SelectPokemonModal: React.FC<{
   open: boolean;
   handleModal: () => void;
 }> = ({ open, handleModal }) => {
-  const [seletedPokemon, setSeletedPokemon] = useState<Pokemon>({} as Pokemon);
+  const [seletedPokemon, setSeletedPokemon] = useState<Pokemon | undefined>(
+    undefined,
+  );
   const pokemon: Pokemon[] = Pokemons;
   const { strengthsList } = useGraph();
 
@@ -55,6 +57,8 @@ const SelectPokemonModal: React.FC<{
     setSeletedPokemon(item);
   }
 
+  console.log(get(PokemonType, `${seletedPokemon?.type[0]}`, undefined));
+  console.log(strengthsList);
   function renderPokemon(item: Pokemon): JSX.Element {
     return (
       <PokeDisplay onClick={() => handleClick(item)}>
@@ -92,9 +96,18 @@ const SelectPokemonModal: React.FC<{
                 <p>Nenhum Selecionado</p>
               )}
               {strengthsList &&
+                seletedPokemon &&
                 strengthsList
-                  ?.filter((item) => head(item) === 1)
-                  .map((item) => <GraphCycle cycle={item} />)}
+                  ?.filter(
+                    (item) =>
+                      head(item) ===
+                        get(PokemonType, `${seletedPokemon?.type[0]}`) ||
+                      head(item) ===
+                        get(PokemonType, `${seletedPokemon?.type[1]}`),
+                  )
+                  .map((item) => (
+                    <GraphCycle cycle={item} pokemon={seletedPokemon} />
+                  ))}
             </Column>
           </Container>
         </DialogContent>
