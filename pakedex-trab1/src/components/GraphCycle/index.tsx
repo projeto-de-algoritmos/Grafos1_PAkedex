@@ -1,10 +1,13 @@
 import React, { useRef, useEffect } from 'react';
 
+import { drop } from 'lodash';
 import { Container, CicleGraph, Cicle } from './styles';
 
-const GraphCycle: React.FC = () => {
+interface GraphCycleProp {
+  cycle: any;
+}
+const GraphCycle: React.FC<GraphCycleProp> = ({ cycle }) => {
   const graph = useRef<any>(null);
-  const LIST = [1, 14, 11, 10, 9, 6, 13, 1];
 
   useEffect(() => {
     const ciclegraph = graph.current;
@@ -25,9 +28,7 @@ const GraphCycle: React.FC = () => {
   return (
     <Container>
       <CicleGraph ref={graph}>
-        {LIST.map((item) => (
-          <Cicle key={item} />
-        ))}
+        {cycle && drop(cycle).map((item) => <Cicle />)}
       </CicleGraph>
     </Container>
   );

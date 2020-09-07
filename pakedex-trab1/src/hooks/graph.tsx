@@ -11,15 +11,15 @@ import { findCircuits } from './algorithmJohnson.js';
 
 interface GraphContextData {
   matrix: number[][];
-  strengthsList: number[][];
+  strengthsList: number[][] | undefined;
 }
 
 const GraphContext = createContext<GraphContextData>({} as GraphContextData);
 
 const GraphProvider: React.FC = ({ children }) => {
   const [matrix, setMatrix] = useState<number[][]>({} as number[][]);
-  const [strengthsList, setStrengthsList] = useState<number[][]>(
-    {} as number[][],
+  const [strengthsList, setStrengthsList] = useState<number[][] | undefined>(
+    undefined,
   );
 
   // TODO: construindo matriz de adjacência e definindo peso nas arestas do grafo.
@@ -46,6 +46,8 @@ const GraphProvider: React.FC = ({ children }) => {
   }, []);
 
   // TODO: construindo lista de adjacência para força
+  // TODO: salvando os ciclos relacionados à força
+
   const buildAdjacencyList = useCallback(() => {
     const listTemp = PokemonTypeConnect.map((item) => {
       let list: number[] = [];
@@ -55,9 +57,8 @@ const GraphProvider: React.FC = ({ children }) => {
 
       return list;
     });
-    // console.log(listTemp);
-    console.log(findCircuits(listTemp));
-    setStrengthsList(listTemp);
+    // console.log(matrixTemp);
+    setStrengthsList(findCircuits(listTemp));
   }, []);
 
   useEffect(() => {

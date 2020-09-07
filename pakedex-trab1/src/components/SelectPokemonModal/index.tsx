@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
-import { get } from 'lodash';
+import { get, drop, head } from 'lodash';
 import GraphCycle from '../GraphCycle';
+
 import { Pokemons } from '../../common';
 import {
   Container,
@@ -13,6 +14,7 @@ import {
   PokeDisplay,
   PokeTitle,
 } from './styles';
+import { useGraph } from '../../hooks/graph';
 
 interface Pokemon {
   id: number;
@@ -46,6 +48,7 @@ const SelectPokemonModal: React.FC<{
 }> = ({ open, handleModal }) => {
   const [seletedPokemon, setSeletedPokemon] = useState<Pokemon>({} as Pokemon);
   const pokemon: Pokemon[] = Pokemons;
+  const { strengthsList } = useGraph();
 
   function handleClick(item: Pokemon): void {
     console.log(item);
@@ -88,7 +91,10 @@ const SelectPokemonModal: React.FC<{
               ) : (
                 <p>Nenhum Selecionado</p>
               )}
-              <GraphCycle />
+              {strengthsList &&
+                strengthsList
+                  ?.filter((item) => head(item) === 1)
+                  .map((item) => <GraphCycle cycle={item} />)}
             </Column>
           </Container>
         </DialogContent>
