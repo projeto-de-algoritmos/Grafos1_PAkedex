@@ -12,6 +12,8 @@ const GraphProvider: React.FC = ({ children }) => {
   const [matrix, setMatrix] = useState<number[][]>({} as number[][]);
 
   useEffect(() => {
+    // TODO: construindo matriz de adjacências e definindo com peso nas arestas do grafo.
+
     const matrixTemp = PokemonTypeConnect.map((item) => {
       const rowMatrix = fill(Array(PokemonTypeConnect.length), 1);
       item.weaknesses.forEach((element) => {
