@@ -23,7 +23,7 @@ interface Pokemon {
   height: string;
   weight: string;
   candy: string;
-  // candy_count: any;
+  candy_count?: number | null;
   egg: string;
   spawn_chance: number;
   avg_spawns: number;

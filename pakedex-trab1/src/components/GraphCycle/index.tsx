@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 
-import './styles.css';
+import { Container, CicleGraph, Cicle } from './styles';
 
 const GraphCycle: React.FC = () => {
   const graph = useRef<any>(null);
@@ -23,28 +23,28 @@ const GraphCycle: React.FC = () => {
   }, []);
 
   return (
-    <div className="App">
-      <div className="ciclegraph" ref={graph}>
-        <div className="circle" />
-        <div className="circle" />
-        <div className="circle" />
-        <div className="circle" />
-        <div className="circle" />
-        <div className="circle" />
-        <div className="circle" />
-        <div className="circle" />
-        <div className="circle" />
-        <div className="circle" />
-        <div className="circle" />
-        <div className="circle" />
-        <div className="circle" />
-        <div className="circle" />
-        <div className="circle" />
-        <div className="circle" />
-        <div className="circle" />
-        <div className="circle" style={{ background: 'red' }} />
-      </div>
-    </div>
+    <Container>
+      <CicleGraph ref={graph}>
+        <Cicle />
+        <Cicle />
+        <Cicle />
+        <Cicle />
+        <Cicle />
+        <Cicle />
+        <Cicle />
+        <Cicle />
+        <Cicle />
+        <Cicle />
+        <Cicle />
+        <Cicle />
+        <Cicle />
+        <Cicle />
+        <Cicle />
+        <Cicle />
+        <Cicle />
+        <Cicle />
+      </CicleGraph>
+    </Container>
   );
 };
 
