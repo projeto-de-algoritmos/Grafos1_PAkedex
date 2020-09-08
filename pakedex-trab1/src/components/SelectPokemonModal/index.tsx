@@ -4,6 +4,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import { get, drop, head } from 'lodash';
 import GraphCycle from '../GraphCycle';
+import ListGraphCycle from '../ListGraphCycle';
 
 import { Pokemons, PokemonType } from '../../common';
 import {
@@ -194,34 +195,7 @@ const SelectPokemonModal: React.FC<{
                   <PokeTitle>Nenhum Selecionado</PokeTitle>
                 </div>
               )}
-              {strengthsList &&
-                selectedPokemon &&
-                strengthsList
-                  ?.filter(
-                    (item) =>
-                      head(item) ===
-                      get(PokemonType, `${selectedPokemon?.type[0]}`),
-                  )
-                  .map((item) => (
-                    <GraphCycle
-                      cycle={item}
-                      type={get(PokemonType, `${selectedPokemon?.type[0]}`)}
-                      pokemon={selectedPokemon}
-                    />
-                  )) &&
-                strengthsList
-                  ?.filter(
-                    (item) =>
-                      head(item) ===
-                      get(PokemonType, `${selectedPokemon?.type[1]}`),
-                  )
-                  .map((item) => (
-                    <GraphCycle
-                      cycle={item}
-                      type={get(PokemonType, `${selectedPokemon?.type[1]}`)}
-                      pokemon={selectedPokemon}
-                    />
-                  ))}
+              <ListGraphCycle selectedPokemon={selectedPokemon} />
             </Column>
           </Container>
         </DialogContent>
