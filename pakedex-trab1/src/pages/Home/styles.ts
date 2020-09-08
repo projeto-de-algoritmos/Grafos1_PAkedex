@@ -2,16 +2,23 @@ import  styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
-  flex:0.5;   
+  flex:1;   
   justify-content:center;
   align-items: center;
+  z-index:2;
 `;
 
-export const Title = styled.h1`
-  font-size: 48px;
-  font-family: 'PokemonSolid';
-  color: #F7C52F;
-  -webkit-text-stroke-width: 4px;
-  -webkit-text-stroke-color: #3364AA;
+export const Title = styled.p`
+  font-size: 24px;  
+  margin-left:25px;
+  margin-bottom:20px;
+`;
 
+export const Column = styled.div`
+  display: flex;
+  flex:1;   
+  flex-direction:column;
+  justify-content:center;
+  align-items: flex-start;
+  margin-left: 80px;
 `;

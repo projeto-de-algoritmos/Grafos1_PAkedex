@@ -86,3 +86,11 @@ export const Status = styled.p`
   margin-top: 5px;
   margin-bottom: 5px;
 `;
+
+export const ConfirmButton = styled.button`
+  margin-top: 15px;
+  margin-bottom: 15px;
+  background-color: #dd412e;
+  height: 35px;
+  border: none;
+`;

@@ -17,6 +17,7 @@ import {
   PokeDisplayStats,
   Stats,
   Status,
+  ConfirmButton,
 } from './styles';
 import { useGraph } from '../../hooks/graph';
 
@@ -49,20 +50,16 @@ interface Pokemon {
 const SelectPokemonModal: React.FC<{
   open: boolean;
   handleModal: () => void;
-}> = ({ open, handleModal }) => {
-  const [selectedPokemon, setselectedPokemon] = useState<Pokemon | undefined>(
-    undefined,
-  );
+  selectedPokemon: Pokemon | undefined;
+  setSelectedPokemon: React.Dispatch<React.SetStateAction<Pokemon | undefined>>;
+}> = ({ open, handleModal, selectedPokemon, setSelectedPokemon }) => {
   const pokemon: Pokemon[] = Pokemons;
   const { strengthsList } = useGraph();
 
   function handleClick(item: Pokemon): void {
-    console.log(item);
-    setselectedPokemon(item);
+    setSelectedPokemon(item);
   }
 
-  console.log(get(PokemonType, `${selectedPokemon?.type[0]}`, undefined));
-  console.log(strengthsList);
   function renderPokemon(item: Pokemon): JSX.Element {
     return (
       <PokeDisplay onClick={() => handleClick(item)}>
@@ -121,6 +118,9 @@ const SelectPokemonModal: React.FC<{
                       </div>
                     </Stats>
                   </StatsList>
+                  <ConfirmButton onClick={handleModal}>
+                    <p>Selecionar pokemon</p>
+                  </ConfirmButton>
                 </>
               ) : (
                 <div
