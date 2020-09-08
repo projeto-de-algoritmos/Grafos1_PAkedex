@@ -94,3 +94,21 @@ export const ConfirmButton = styled.button`
   width: 100%;
   border: none;
 `;
+
+export const ContainerEnemy = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+`;
+
+export const TitleEnemy = styled.p`
+  color: ${(props) => props.color};
+  text-align: center;
+  margin: 30px 0 10px 0px;
+  font-size: 15px;
+`;
+
+export const NameEnemy = styled.p`
+  text-align: center;
+  font-size: 10px;
+`;

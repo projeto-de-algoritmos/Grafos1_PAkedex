@@ -30,13 +30,11 @@ interface Pokemon {
   }[];
 }
 
-
 const ButtonPokemon: React.FC<{
-  isEnemy: boolean,
-  enemyTeam: (Pokemon | undefined)[],
-  setEnemyTeam: React.Dispatch<React.SetStateAction<(Pokemon | undefined)[]>>,
-
-}> = ({isEnemy,enemyTeam,setEnemyTeam}) => {
+  isEnemy: boolean;
+  enemyTeam: (Pokemon | undefined)[];
+  setEnemyTeam: React.Dispatch<React.SetStateAction<(Pokemon | undefined)[]>>;
+}> = ({ isEnemy, enemyTeam, setEnemyTeam }) => {
   const [selectedPokemon, setSelectedPokemon] = useState<Pokemon | undefined>(
     undefined,
   );
@@ -46,17 +44,17 @@ const ButtonPokemon: React.FC<{
   const pokemon: Pokemon[] = Pokemons;
 
   useEffect(() => {
-    if(isEnemy == true){
-      let index = Math.floor(Math.random() * 151) + 1;  
+    if (isEnemy === true) {
+      const index = Math.floor(Math.random() * 151) + 1;
       setSelectedPokemon(pokemon[index]);
-      setEnemyTeam(enemyTeam =>[...enemyTeam,pokemon[index]])
+      setEnemyTeam((enemyTeam) => [...enemyTeam, pokemon[index]]);
     }
   }, []);
 
   const handleModal = (): void => {
-    if(isEnemy == true){
-      setIsVisible(false);  
-    }else{
+    if (isEnemy == true) {
+      setIsVisible(false);
+    } else {
       setIsVisible(!isVisible);
     }
   };
@@ -64,18 +62,23 @@ const ButtonPokemon: React.FC<{
   return (
     <Container onClick={handleModal}>
       {selectedPokemon ? (
-       <>
-        <img src={selectedPokemon.img} />
-        <p>{selectedPokemon.name}</p>
-      </>
-      ): 
-      (
-       <>
+        <>
+          <img src={selectedPokemon.img} />
+          <p>{selectedPokemon.name}</p>
+        </>
+      ) : (
+        <>
           <p style={{ fontSize: 40, marginBottom: 20 }}>+</p>
           <p>Select Pokemon</p>
         </>
-      ) }
-      <SelectPokemonModal open={isVisible} selectedPokemon={selectedPokemon} setSelectedPokemon={setSelectedPokemon} handleModal={handleModal} />
+      )}
+      <SelectPokemonModal
+        open={isVisible}
+        selectedPokemon={selectedPokemon}
+        setSelectedPokemon={setSelectedPokemon}
+        handleModal={handleModal}
+        enemyTeam={enemyTeam}
+      />
     </Container>
   );
 };

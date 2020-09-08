@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
-import { Title, Container,Column } from './styles';
+import { Title, Container, Column } from './styles';
 
 import { ButtonPokemon, SelectPokemonModal } from '../../components';
 
@@ -31,27 +31,50 @@ interface Pokemon {
 }
 
 const Home: React.FC = () => {
-
   const [enemyTeam, setEnemyTeam] = useState<Array<Pokemon | undefined>>([]);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'row', marginTop: '15%' }}>
       <Column>
         <Title>Seu time</Title>
-      <Container>
-        <ButtonPokemon isEnemy={false} enemyTeam={enemyTeam} setEnemyTeam={setEnemyTeam}/>
-        <ButtonPokemon isEnemy={false} enemyTeam={enemyTeam} setEnemyTeam={setEnemyTeam}/>
-        <ButtonPokemon isEnemy={false} enemyTeam={enemyTeam} setEnemyTeam={setEnemyTeam}/>
-      </Container>
+        <Container>
+          <ButtonPokemon
+            isEnemy={false}
+            enemyTeam={enemyTeam}
+            setEnemyTeam={setEnemyTeam}
+          />
+          <ButtonPokemon
+            isEnemy={false}
+            enemyTeam={enemyTeam}
+            setEnemyTeam={setEnemyTeam}
+          />
+          <ButtonPokemon
+            isEnemy={false}
+            enemyTeam={enemyTeam}
+            setEnemyTeam={setEnemyTeam}
+          />
+        </Container>
       </Column>
-      
+
       <Column>
         <Title>Time inimigo</Title>
-      <Container>
-        <ButtonPokemon isEnemy={true} enemyTeam={enemyTeam} setEnemyTeam={setEnemyTeam}/>
-        <ButtonPokemon isEnemy={true} enemyTeam={enemyTeam} setEnemyTeam={setEnemyTeam}/>
-        <ButtonPokemon isEnemy={true} enemyTeam={enemyTeam} setEnemyTeam={setEnemyTeam}/>
-      </Container>
+        <Container>
+          <ButtonPokemon
+            isEnemy
+            enemyTeam={enemyTeam}
+            setEnemyTeam={setEnemyTeam}
+          />
+          <ButtonPokemon
+            isEnemy
+            enemyTeam={enemyTeam}
+            setEnemyTeam={setEnemyTeam}
+          />
+          <ButtonPokemon
+            isEnemy
+            enemyTeam={enemyTeam}
+            setEnemyTeam={setEnemyTeam}
+          />
+        </Container>
       </Column>
     </div>
   );

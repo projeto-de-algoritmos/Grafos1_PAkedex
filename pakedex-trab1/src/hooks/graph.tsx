@@ -58,17 +58,13 @@ const GraphProvider: React.FC = ({ children }) => {
 
       return list;
     });
-    let counter = 0;
-    function increment(): void {
-      counter += 1;
-    }
 
     setStrengthsList(findCircuits(listTemp));
   }, []);
 
   useEffect(() => {
     buildAdjacencyList();
-    // buildAdjacencyMatrix();
+    buildAdjacencyMatrix();
   }, [buildAdjacencyList, buildAdjacencyMatrix]);
 
   return (
