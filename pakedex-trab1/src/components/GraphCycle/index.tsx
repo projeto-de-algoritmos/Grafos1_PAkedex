@@ -30,7 +30,7 @@ const GraphCycle: React.FC<GraphCycleProp> = ({ cycle, pokemon, type }) => {
   return (
     <Container>
       <CicleGraph ref={graph}>
-        {cycle &&
+        {cycle.length &&
           drop(cycle).map((item) => (
             <Cicle
               key={String(item)}

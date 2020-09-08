@@ -10,7 +10,8 @@
 | 16/0015294  |  Matheus Rodrigues do Nascimento |
 
 ## Sobre 
-PAkedex é um projeto que ajuda treinadores a escolherem os melhores pokemons para a batalha contra seu oponente. O time adversário é gerado randomicamente. Você pode escolher os pokemons para compor o seu time para a batalha e o PAkedex avalia se o pokemon escolhido será eficaz contra os pokemons do adversário. A ideia do projeto surgiu pois as fraquezas e a eficácia dos tipos de pokemon podem ser representadas pelo grafo direcionado, assim podemos utilizar os grafos para nos dar a eficácia do pokemon. Utilizamos o algoritmo de johnson para mapear todos os ciclos em que o tipo de pokemon aparece para que o usuário possa entender a eficácia e fraqueza do pokemon.  
+PAkedex é um projeto que ajuda treinadores a escolherem os melhores pokemons para a batalha contra seu oponente. O time adversário é gerado randomicamente. Você pode escolher os pokemons para compor o seu time para a batalha e o PAkedex avalia se o pokemon escolhido será eficaz contra os pokemons do adversário. As fraquezas e a eficácia dos tipos de pokemon podem ser representados pelo grafo direcionado, assim podemos ter uma visão mais clara da eficácia do pokemon. Utilizamos o algoritmo de johnson para mapear todos os ciclos em que o tipo de pokemon aparece para que o usuário possa entender a eficácia e fraqueza do pokemon relacionado aos pokemons do adversário.  
+
 ![print2](./assets/images/graph.png)
 
 Também utilizamos a matriz de adjascencia para verificar a eficácia do ataque contra cada um dos pokemons inimigo.
