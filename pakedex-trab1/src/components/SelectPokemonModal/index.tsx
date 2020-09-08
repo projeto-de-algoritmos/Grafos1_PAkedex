@@ -88,7 +88,7 @@ const SelectPokemonModal: React.FC<{
             <Divider />
             <Column>
               {get(selectedPokemon, 'img', null) ? (
-                <>
+                <div>
                   <div
                     style={{
                       display: 'flex',
@@ -121,7 +121,7 @@ const SelectPokemonModal: React.FC<{
                   <ConfirmButton onClick={handleModal}>
                     <p>Selecionar pokemon</p>
                   </ConfirmButton>
-                </>
+                </div>
               ) : (
                 <div
                   style={{

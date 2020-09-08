@@ -88,9 +88,9 @@ export const Status = styled.p`
 `;
 
 export const ConfirmButton = styled.button`
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin: 15px;
   background-color: #dd412e;
   height: 35px;
+  width: 100%;
   border: none;
 `;
