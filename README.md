@@ -45,7 +45,7 @@ Execute o projeto
 Ao iniciar o projeto o time inimigo é gerado randomicamente, clique no botão de selecionar pokemon para conseguir escolher o pokemon que deseja usar para a batalha contra o inimigo, ao selecionar um pokemon você tera informações sobre se ele é eficaz ou fraco contra o time do adversário.
 
 ## Outros 
-Quaisquer outras informações sobre seu projeto podem ser descritas abaixo.
+[Link para o vídeo](https://github.com/projeto-de-algoritmos/Grafos1_PAkedex/blob/master/assets/video/Video_intro.mp4)
 
 
 
